@@ -7,5 +7,12 @@ export function useProducts() {
           );
         return response.data;
     }
-    return{ list };
+
+    async function remove(id) {
+        const response = await axios.delete(`https://fakestoreapi.com/products/${id}`);
+
+        return response.data;
+    }
+
+    return{ list, remove };
 }

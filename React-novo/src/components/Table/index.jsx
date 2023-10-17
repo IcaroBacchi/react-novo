@@ -1,4 +1,8 @@
-export default function Table({ products, handleLimit }) {
+export default function Table({ products, handleLimit, deleteFunction }) {
+  function handleDelete(id) {
+    deleteFunction(id);
+  }
+
   return (
     <div className="px-12 py-5 border rounded-md bg-white shadow">
       <table>
@@ -10,6 +14,7 @@ export default function Table({ products, handleLimit }) {
             <th className="pb-3 w-1/6 text-center">Categoria</th>
             <th className="pb-3 w-1/6 text-center">Preço</th>
             <th className="pb-3 w-1/6 text-center">Avaliação</th>
+            <th className="pb-3 w-1/6 text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +38,14 @@ export default function Table({ products, handleLimit }) {
                   })}
                 </td>
                 <td className="py-3 text-center">{product.rating.rate}</td>
+                <td className="py-3 text-center">
+                  <button
+                    onClick={() => handleDelete(product.id)}
+                    className="border px-3 py-2 bg-red-600 rounded text-white hover:bg-red-500"
+                  >
+                    Excluir
+                  </button>
+                </td>
               </tr>
             );
           })}

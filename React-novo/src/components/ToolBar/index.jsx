@@ -16,6 +16,7 @@ export default function ToolBar({ handleSort, handleSearch }) {
           <option value="asc">ASC</option>
           <option value="desc">DESC</option>
         </select>
+        <button className="px-2 py-1 rounded bg-gray-400 hover:bg-gray-300">Adicionar</button>
       </div>
     </div>
   );
