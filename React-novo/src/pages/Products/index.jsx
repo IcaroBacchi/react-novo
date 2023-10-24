@@ -14,16 +14,15 @@ export default function Products() {
   const { list, remove } = useProducts();
 
   async function removeProduct(id) {
-    const removedProduct = await remove(id)
+    const removedProduct = await remove(id);
     const newArray = products.filter(
       (product) => product.id != removedProduct.id
     );
-    setProducts(newArray)
+    setProducts(newArray);
   }
 
   async function getAllProducts() {
     setProducts(await list(limit, sort));
-
   }
 
   function handleLimit(value) {
@@ -43,7 +42,7 @@ export default function Products() {
     const filterWord = search.toLowerCase();
     const newProducts = products.filter((product) => {
       const productTitle = product.title.toLowerCase();
-      return productTitle.includes(filterWord)
+      return productTitle.includes(filterWord);
     });
     setFilteredProducts(newProducts);
   }
@@ -62,14 +61,12 @@ export default function Products() {
 
   return (
     <>
-      <ToolBar
-        handleSort={handleSort}
-        handleSearch={handleSearch} />
+      <ToolBar handleSort={handleSort} handleSearch={handleSearch} />
       <Table
         products={search ? filteredProducts : products}
         handleLimit={handleLimit}
         deleteFunction={removeProduct}
-        />
+      />
     </>
   );
 }

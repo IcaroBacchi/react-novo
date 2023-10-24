@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
-function DialogModal() {
+
+export default function DialogModal({
+  titulo,
+  children,
+  header,
+  handleConfirm,
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
+    handleConfirm();
     setIsModalOpen(false);
   };
   const handleCancel = () => {
@@ -13,20 +20,18 @@ function DialogModal() {
   };
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
+      <Button className="bg-blue-500" type="primary" onClick={showModal}>
+        {titulo}
       </Button>
       <Modal
-        title="Basic Modal"
+        title={header}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        okButtonProps={{ className: "bg-blue-600" }}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        {children}
       </Modal>
     </>
   );
 }
-export default App;
