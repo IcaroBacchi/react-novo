@@ -1,8 +1,10 @@
 import { useState } from "react";
 import DialogModal from "../Modal";
 import ProductForm from "../forms/Products";
+import { useProducts } from "../../hooks/useProducts";
 
 export default function ToolBar({ handleSort, handleSearch }) {
+  const { create } = useProducts();
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
@@ -10,8 +12,8 @@ export default function ToolBar({ handleSort, handleSearch }) {
     category: "",
   });
 
-  function handleSubmit() {
-    alert(newProduct);
+  async function handleSubmit() {
+    await create(newProduct);
   }
 
   return (

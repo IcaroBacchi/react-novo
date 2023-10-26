@@ -13,7 +13,6 @@ export default function Table({ products, handleLimit, deleteFunction }) {
             <th className="pb-3 w-1/6 text-center">Título</th>
             <th className="pb-3 w-1/6 text-center">Categoria</th>
             <th className="pb-3 w-1/6 text-center">Preço</th>
-            <th className="pb-3 w-1/6 text-center">Avaliação</th>
             <th className="pb-3 w-1/6 text-center">Ações</th>
           </tr>
         </thead>
@@ -37,8 +36,10 @@ export default function Table({ products, handleLimit, deleteFunction }) {
                     currency: "BRL",
                   })}
                 </td>
-                <td className="py-3 text-center">{product.rating.rate}</td>
                 <td className="py-3 text-center">
+                  <button className="border px-3 py-2 bg-blue-600 rounded text-white hover:bg-blue-500">
+                    Editar
+                  </button>
                   <button
                     onClick={() => handleDelete(product.id)}
                     className="border px-3 py-2 bg-red-600 rounded text-white hover:bg-red-500"

@@ -61,7 +61,11 @@ export default function Products() {
 
   return (
     <>
-      <ToolBar handleSort={handleSort} handleSearch={handleSearch} />
+      <ToolBar
+        handleProducts={setProducts}
+        handleSort={handleSort}
+        handleSearch={handleSearch}
+      />
       <Table
         products={search ? filteredProducts : products}
         handleLimit={handleLimit}
